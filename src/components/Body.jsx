@@ -37,8 +37,8 @@ const Body = () => {
           }}>Search</button>
           </div>
           <button className="filter-btn" onClick={()=>{
-            let filteredList=listOfRestaurant.filter((res)=>res.info.avgRating> 4.2);
-            setListOfRestaurant(filteredList);
+            let filteredList=listOfRestaurant.filter((res)=>res.info.avgRating> 4.5);
+            setFilteredList(filteredList);
           }}>Top Rated Restaurant</button>
         </div>
         <div className="res-container">
