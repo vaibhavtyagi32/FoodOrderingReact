@@ -6,12 +6,12 @@ const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const onlineStatus=useOnlineStatus();
   return (
-    <div className="header">
-      <div className="logo-container">
+    <div className="flex justify-between p-4 bg-indigo-400 shadow-lg mb-2 items-center">
+      <div className="w-20">
         <img className="logo" src={LOGO_URL}></img>
       </div>
-      <div className="nav-items">
-        <ul>
+      <div>
+        <ul className="flex gap-10 p-4 m-4 text-2xl">
           <li>
             Online Status {onlineStatus ? "✅":"❌"}
           </li>
@@ -27,7 +27,7 @@ const Header = () => {
           <li>Cart</li>
           <li>
             <button
-              className="login"
+              className="border border-solid border-black px-4 rounded-xl"
               onClick={() => {
                 loginBtn === "Login"
                   ? setLoginBtn("Logout")

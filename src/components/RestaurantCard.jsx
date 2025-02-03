@@ -5,18 +5,20 @@ const RestaurantCard = (props) => {
     const {cloudinaryImageId,name,cuisines,avgRating,costForTwo,id}=resData?.info;
     const {deliveryTime}=resData?.info.sla;
     return (
-      <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
+      <div className="w-[250px] bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105">
         <img
-          className="card-img"
+          className="w-full h-40 object-cover rounded-t-lg"
           src={CDN_URL+cloudinaryImageId}
         ></img>
-        <Link to={`/restaurant/${id}`} style={{ textDecoration: "none", color: "inherit" }}>
-        <div className="card-content">
-          <h3 className="card-title">{name}</h3>
-          <p className="card-cuisines">{cuisines.join(", ")}</p>
-          <p className="card-rating">⭐ {avgRating} Stars</p>
-          <p className="card-price">💰 {costForTwo}</p>
-          <p className="card-time">⏳ {deliveryTime} mins</p>
+        <Link to={`/restaurant/${id}`} className="text-inherit no-underline">
+        <div className="p-4">
+          <h3 className="text-lg font-semibold text-gray-900 truncate">{name}</h3>
+          <p className="text-sm text-gray-500 truncate">{cuisines.join(", ")}</p>
+          <div className="flex items-center justify-between mt-2 text-sm text-gray-700">
+            <p>⭐ {avgRating} Stars</p>
+            <p>💰 {costForTwo}</p>
+          </div>
+          <p className="text-sm text-gray-500 mt-2">⏳ {deliveryTime} mins</p>
         </div>
         </Link>
       </div>
