@@ -10,7 +10,7 @@ const RestaurantCard = (props) => {
           className="card-img"
           src={CDN_URL+cloudinaryImageId}
         ></img>
-        <Link to={`/restaurant/${id}`}>
+        <Link to={`/restaurant/${id}`} style={{ textDecoration: "none", color: "inherit" }}>
         <div className="card-content">
           <h3 className="card-title">{name}</h3>
           <p className="card-cuisines">{cuisines.join(", ")}</p>

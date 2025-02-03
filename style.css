@@ -13,7 +13,7 @@
     display: flex;
     gap: 3ß0px;
 }
-li{
+.nav-items ul li{
     padding: 8px 20px;
     font-size: 30px;
     list-style-type: none;
