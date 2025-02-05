@@ -1,25 +1,25 @@
 import RestaurantCard from "./RestaurantCard";
-import { use, useEffect, useState } from "react";
+import {useEffect, useState,useContext} from "react";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 const Body = () => {
     const [listOfRestaurant,setListOfRestaurant]=useState([]);
     const [searchInput,setSearchInput]=useState("");
     const [filteredList,setFilteredList]=useState([]);
+    const {loggedInUser,setUserName}=useContext(userContext);
     useEffect(()=>{
       fetchData();
     },[]);
     const fetchData=async ()=>{
       const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6691565&lng=77.45375779999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const jsonData=await data.json();
-      console.log(jsonData);
       const restaurants =
       jsonData?.data?.cards?.find(
         (card) => card.card?.card?.gridElements?.infoWithStyle?.restaurants
       )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       setListOfRestaurant(restaurants);
       setFilteredList(restaurants);
-      console.log(listOfRestaurant);
     }
     const onlineStatus=useOnlineStatus();
     if(onlineStatus===false){
@@ -48,6 +48,12 @@ const Body = () => {
             let filteredList=listOfRestaurant.filter((res)=>res.info.avgRating> 4.5);
             setFilteredList(filteredList);
           }}>Top Rated Restaurant</button>
+          </div>
+          <div>
+            <label htmlFor="">UserName : </label>
+            <input type="text" name="username" id="username" className="p-2 border" value={loggedInUser} onChange={(e)=>{
+                setUserName(e.target.value);
+            }}/>
           </div>
         </div>
         <div className="flex flex-wrap gap-5 p-5 cursor-pointer">

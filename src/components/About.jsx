@@ -5,7 +5,6 @@ class About extends React.Component{
         return(
             <div>
                 <h1>About us Page</h1>
-                <h2>Welcome to Namaste React series...</h2>
                 <UserClass/>
             </div>
         )
