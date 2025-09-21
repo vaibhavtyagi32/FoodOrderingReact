@@ -1,5 +1,5 @@
 import React from "react";
-import UserClass from "./userClass";
+import UserClass from "./UserClass";
 class About extends React.Component{
     render(){
         return(
